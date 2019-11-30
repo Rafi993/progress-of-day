@@ -8,5 +8,11 @@ https://chrome.google.com/webstore/detail/progress-of-the-day/oifeogeaecofkhbaai
 
 ### Todo
 
-- [ ] Change background image depending on period of day
+- [x] Change background image depending on period of day
 - [ ] Use difference between days for Week, Month and Year
+
+### Thanks to
+
+- Night sky Photo by Francesco Ungaro from Pexels
+- Morning Photo by Ákos Szabó from Pexels
+- Sunset Photo by Pixabay
