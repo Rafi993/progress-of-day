@@ -2,4 +2,6 @@
 
 Simple chrome extension to show as **Day** / **Week** / **Month** / **Year** passes by
 
-![Screen shit](/screen_shot.png)
+https://chrome.google.com/webstore/detail/progress-of-the-day/oifeogeaecofkhbaaipadfnolbcpokkg
+
+![Screen shot](/screen_shot.png)
