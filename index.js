@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     progressValue.innerText = `${percentage}%`;
     document.title = `${step.value} - ${percentage}%`;
-    completed.style.width = `${percentage}%`;
+    completed.style.width = `calc(${percentage}% - 7px)`;
   }, 1000);
 
   step.addEventListener("change", event => {
