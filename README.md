@@ -6,11 +6,6 @@ https://chrome.google.com/webstore/detail/progress-of-the-day/oifeogeaecofkhbaai
 
 ![Screen shot](/screen_shot.png)
 
-### Todo
-
-- [x] Change background image depending on period of day
-- [ ] Use difference between days for Week, Month and Year
-
 ### Thanks to
 
 - Night sky Photo by Francesco Ungaro from Pexels
