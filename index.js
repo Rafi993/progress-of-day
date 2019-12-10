@@ -31,12 +31,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const storedPercentage = localStorage.getItem("percentage");
-  const storedTiming = localStorage.getItem("timing");
-  if (storedPercentage && storedTiming) {
-    setPercentage(storedPercentage, storedTiming);
-  }
-
   const computePercentage = () => {
     const currentTime = new Date();
     const currentTimeDifference = endDate.getTime() - currentTime.getTime();
@@ -68,8 +62,16 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("timing", timing);
   };
 
-  // Run first time
-  computePercentage();
+  const storedPercentage = localStorage.getItem("percentage");
+  const storedTiming = localStorage.getItem("timing");
+  if (storedPercentage && storedTiming) {
+    // Display stored percentage and background image
+    setPercentage(storedPercentage, storedTiming);
+  } else {
+    // Run first time
+    computePercentage();
+  }
+
   // Runs every 5 minutes to update progress of time
   const timer = setInterval(computePercentage, 300000);
 
