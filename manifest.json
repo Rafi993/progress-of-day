@@ -1,6 +1,6 @@
 {
   "name": "Progress of the day",
-  "version": "0.5",
+  "version": "0.6",
   "description": "Shows you as the day progresses",
   "manifest_version": 2,
   "chrome_url_overrides": {
