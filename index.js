@@ -34,13 +34,13 @@ window.addEventListener("DOMContentLoaded", () => {
     // Change background image depending of time of day
     if (currentHour > morning && currentHour < afternoon) {
       // 5AM - 4PM
-      body.style.backgroundImage = "url('images/morning.jpg')";
+      body.style.backgroundImage = "url('images/morning.webp')";
     } else if (currentHour > 16 && currentHour < 18) {
       // 4PM - 7PM
-      body.style.backgroundImage = "url('images/sunset.jpg')";
+      body.style.backgroundImage = "url('images/sunset.webp')";
     } else {
       // 7PM - 5AM
-      body.style.backgroundImage = "url('images/night.jpg')";
+      body.style.backgroundImage = "url('images/night.webp')";
     }
   }, 1000);
 
