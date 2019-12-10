@@ -13,8 +13,31 @@ window.addEventListener("DOMContentLoaded", () => {
   endDate.setHours(23, 59, 59, 999);
   let totalDifference = endDate.getTime() - startDate.getTime();
 
-  // Runs every one second to update progress of time
-  const timer = setInterval(() => {
+  const setPercentage = (percentage, timing) => {
+    progressValue.innerText = `${percentage}%`;
+    document.title = `${step.value} - ${percentage}%`;
+    completed.style.width = `calc(${percentage}% - 7px)`;
+
+    // Change background image depending of time of day
+    switch (timing) {
+      case "morning":
+        body.style.backgroundImage = "url('images/morning.webp')";
+        break;
+      case "evening":
+        body.style.backgroundImage = "url('images/sunset.webp')";
+        break;
+      default:
+        body.style.backgroundImage = "url('images/night.webp')";
+    }
+  };
+
+  const storedPercentage = localStorage.getItem("percentage");
+  const storedTiming = localStorage.getItem("timing");
+  if (storedPercentage && storedTiming) {
+    setPercentage(storedPercentage, storedTiming);
+  }
+
+  const computePercentage = () => {
     const currentTime = new Date();
     const currentTimeDifference = endDate.getTime() - currentTime.getTime();
     const percentage = (
@@ -22,27 +45,33 @@ window.addEventListener("DOMContentLoaded", () => {
       100
     ).toFixed(0);
 
-    progressValue.innerText = `${percentage}%`;
-    document.title = `${step.value} - ${percentage}%`;
-    completed.style.width = `calc(${percentage}% - 7px)`;
-
     const currentHour = currentTime.getHours();
     const morning = 5;
     const afternoon = 16;
     const evening = 18;
+    let timing = "morning";
 
-    // Change background image depending of time of day
     if (currentHour > morning && currentHour < afternoon) {
       // 5AM - 4PM
-      body.style.backgroundImage = "url('images/morning.webp')";
+      timing = "morning";
     } else if (currentHour > 16 && currentHour < 18) {
       // 4PM - 7PM
-      body.style.backgroundImage = "url('images/sunset.webp')";
+      timing = "evening";
     } else {
       // 7PM - 5AM
-      body.style.backgroundImage = "url('images/night.webp')";
+      timing = "night";
     }
-  }, 1000);
+
+    setPercentage(percentage, timing);
+
+    localStorage.setItem("percentage", percentage);
+    localStorage.setItem("timing", timing);
+  };
+
+  // Run first time
+  computePercentage();
+  // Runs every 5 minutes to update progress of time
+  const timer = setInterval(computePercentage, 300000);
 
   step.addEventListener("change", event => {
     document.title = `${event.target.value} 0%`;
