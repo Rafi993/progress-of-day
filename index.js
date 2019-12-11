@@ -111,5 +111,8 @@ window.addEventListener("DOMContentLoaded", () => {
     startDate.setHours(0, 0, 0, 0);
     endDate.setHours(23, 59, 59, 999);
     totalDifference = endDate.getTime() - startDate.getTime();
+
+    // Run it after time duration is changed
+    computePercentage();
   });
 });
