@@ -64,9 +64,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const storedPercentage = localStorage.getItem("percentage");
   const storedTiming = localStorage.getItem("timing");
+  const storedDuration = localStorage.getItem("duration");
+  const storedStartDate = localStorage.getItem("startDate");
+  const storedEndDate = localStorage.getItem("endDate");
+  const storedDifference = localStorage.getItem("totalDifference");
+
   if (storedPercentage && storedTiming) {
     // Display stored percentage and background image
     setPercentage(storedPercentage, storedTiming);
+
+    if (storedDuration && storedStartDate && storedEndDate) {
+      document.title = `${storedDuration} ${storedPercentage}%`;
+      startDate = storedStartDate;
+      endDate = storedEndDate;
+      step.value = storedDuration;
+      totalDifference = storedDifference;
+    }
   } else {
     // Run first time
     computePercentage();
@@ -76,9 +89,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const timer = setInterval(computePercentage, 300000);
 
   step.addEventListener("change", event => {
-    document.title = `${event.target.value} 0%`;
+    const { value } = event.target;
+    document.title = `${value} 0%`;
     const currentDate = new Date();
-    switch (event.target.value) {
+    switch (value) {
       case "Week":
         startDate = new Date(
           currentDate.setDate(currentDate.getDate() - currentDate.getDay())
@@ -112,6 +126,10 @@ window.addEventListener("DOMContentLoaded", () => {
     endDate.setHours(23, 59, 59, 999);
     totalDifference = endDate.getTime() - startDate.getTime();
 
+    localStorage.setItem("duration", value);
+    localStorage.setItem("startDate", startDate);
+    localStorage.setItem("endDate", endDate);
+    localStorage.setItem("totalDifference", totalDifference);
     // Run it after time duration is changed
     computePercentage();
   });
