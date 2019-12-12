@@ -86,7 +86,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // Runs every 5 minutes to update progress of time
-  const timer = setInterval(computePercentage, 300000);
+  const timer = setInterval(computePercentage, 1000);
 
   step.addEventListener("change", event => {
     const { value } = event.target;
