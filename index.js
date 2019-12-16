@@ -75,8 +75,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (storedDuration && storedStartDate && storedEndDate) {
       document.title = `${storedDuration} ${storedPercentage}%`;
-      startDate = storedStartDate;
-      endDate = storedEndDate;
+      startDate = new Date(storedStartDate);
+      endDate = new Date(storedEndDate);
       step.value = storedDuration;
       totalDifference = storedDifference;
     }
