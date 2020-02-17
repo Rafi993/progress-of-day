@@ -7,9 +7,9 @@
     "newtab": "index.html"
   },
   "icons": {
-    "16": "public/images/icon_16.png",
-    "32": "public/images/icon_32.png",
-    "48": "public/images/icon_48.png",
-    "128": "public/images/icon_128.png"
+    "16": "images/icon_16.png",
+    "32": "images/icon_32.png",
+    "48": "images/icon_48.png",
+    "128": "images/icon_128.png"
   }
 }
