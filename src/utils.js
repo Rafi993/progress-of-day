@@ -16,7 +16,7 @@ export const calculateTiming = (): string => {
   return "night";
 };
 
-export const calculatePercentage = (duration: string) => {
+export const calculatePercentage = (duration: string): number => {
   switch (duration) {
     case "day":
     case "week":

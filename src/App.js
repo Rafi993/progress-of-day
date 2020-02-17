@@ -1,22 +1,31 @@
 // @flow
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
 import Duration from "./Duration";
 import ProgressBar from "./ProgressBar";
+import useInterval from "./useInterval";
+import { calculateTiming, calculatePercentage } from "./utils";
 import { GlobalStyle, App as StyledApp, Progress, Title } from "./styles";
 
 const storedTiming = localStorage.getItem("timing");
 const storedDuration = localStorage.getItem("duration");
+const storedProgress = localStorage.getItem("progress");
 
 const App = () => {
   const [timing, setTiming] = useState(storedTiming || "night");
   const [duration, setDuration] = useState(storedDuration || "day");
-  const [progress, setProgress] = useState(20);
-  const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime] = useState(0);
+  const [progress, setProgress] = useState(storedProgress || "20");
 
-  useEffect(() => {});
+  useInterval(() => {
+    const newTimimg = calculateTiming();
+    const percentage = calculatePercentage(duration);
+    setProgress(percentage);
+    setTiming(newTimimg);
+
+    localStorage.setItem("timing", newTimimg);
+    localStorage.setItem("progress", percentage);
+  }, 1000);
 
   const handleDuration = useCallback(
     (event: any) => {
