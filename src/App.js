@@ -25,6 +25,7 @@ const App = () => {
 
     localStorage.setItem("timing", newTimimg);
     localStorage.setItem("progress", percentage);
+    document.title = `${duration} - ${percentage}%`;
   }, 1000);
 
   const handleDuration = useCallback(
